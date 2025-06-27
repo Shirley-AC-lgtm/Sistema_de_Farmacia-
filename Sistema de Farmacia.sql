@@ -1,11 +1,5 @@
 USE sgSistemafarmacia;
 
-CREATE TABLE InicioSecion (
-usuario VARCHAR(50),
-rol VARCHAR(15),
-contraseña VARCHAR(16)
-);
-
 CREATE TABLE Proveedor (
 iD_Proveedor INT,
 nombre VARCHAR(50),
@@ -103,6 +97,7 @@ iD_Usuario INT,
 nombre VARCHAR(50),
 correo VARCHAR(100),
 contrasena VARCHAR(100),
+rol VARCHAR(20),
 iD_Rol INT,
 sucursal_Asignada INT,
 PRIMARY KEY (iD_Usuario)

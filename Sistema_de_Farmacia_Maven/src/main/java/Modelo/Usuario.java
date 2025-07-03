@@ -8,7 +8,9 @@ public class Usuario {
     private int idRol;
     private int sucursalAsignada;
 
-    // Constructor
+    public Usuario() {
+    }
+    
     public Usuario(int idUsuario, String nombre, String correo, String contrasena, String rol, int idRol, int sucursalAsignada) {
         this.idUsuario = idUsuario;
         this.nombre = nombre;

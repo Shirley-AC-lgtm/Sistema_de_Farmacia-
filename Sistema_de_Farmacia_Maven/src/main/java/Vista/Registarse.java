@@ -272,57 +272,69 @@ public class Registarse extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // Guardar 
-        
-         try {
-        
+       try {
         String nombre = Nombre.getText();
         String correo = Correo.getText();
         String contrasena = Contraseña.getText();
         String rol = Rol.getText();
 
-        int idRol = Integer.parseInt(ID_Rol.getText());
-        
-        switch (rol.toLowerCase()) {
-        case "Cajero":
-        idRol = 4;
-        break;
-        case "Encargado":
-        idRol = 3;
-        break;
-        case "Administrador":
-        idRol = 1;
-        break;
-        case "Gerente":
-        idRol = 2;
-        break;
-        case "Dependiente":
-        idRol = 5;
-        break;
-       default:
-        idRol = 0; 
-}
-       
-        
-        
-        JOptionPane.showMessageDialog(null, "Usuario registrado exitosamente");
+        int idRol = 0;
 
-       
-        Nombre.setText("");
-        Correo.setText("");
-        Contraseña.setText("");
-        Rol.setText("");
-        ID_Rol.setText("");
-        
-        Inicio_de_Secion is = new Inicio_de_Secion();
-        is.setLocationRelativeTo(null);
-        is.setVisible(true);
-        
-        this.setVisible(false);
-        
+        switch (rol.toLowerCase()) {
+            case "cajero":
+                idRol = 4;
+                break;
+            case "encargado":
+                idRol = 3;
+                break;
+            case "administrador":
+                idRol = 1;
+                break;
+            case "gerente":
+                idRol = 2;
+                break;
+            case "dependiente":
+                idRol = 5;
+                break;
+            default:
+                JOptionPane.showMessageDialog(null, "Rol no válido");
+                return; 
+        }
+
+      
+        Usuario usuario = new Usuario();
+        usuario.setNombre(nombre);
+        usuario.setCorreo(correo);
+        usuario.setContrasena(contrasena);
+        usuario.setIdRol(idRol);
+
+      
+        Usuario_Controlador uc = new Usuario_Controlador();
+        boolean resultado = uc.Guardar(usuario);
+
+        if (resultado) {
+            JOptionPane.showMessageDialog(null, "Usuario registrado exitosamente");
+            
+            
+            Nombre.setText("");
+            Correo.setText("");
+            Contraseña.setText("");
+            Rol.setText("");
+            ID_Rol.setText("");
+            
+            Inicio_de_Secion is = new Inicio_de_Secion();
+            is.setLocationRelativeTo(null);
+            is.setVisible(true);
+            
+            this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(null, "Error al registrar usuario en la base de datos");
+        }
+
     } catch (Exception e) {
         JOptionPane.showMessageDialog(null, "Error al registrar usuario: " + e.getMessage());
     }
-    
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void UsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsuarioActionPerformed

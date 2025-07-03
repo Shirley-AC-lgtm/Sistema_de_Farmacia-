@@ -32,5 +32,10 @@ public class Usuario_Controlador {
             System.out.println("Error al registrar usuario: " + e);
         }
     }
+    
+    public boolean Guardar(Usuario usuario) {
+  
+    return true; 
+   }
 }
 
